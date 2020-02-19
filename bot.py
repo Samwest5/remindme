@@ -40,6 +40,7 @@ def bot():
   global last_checked_time
   time.sleep(1)
   current_time = get_time()
+  print(current_time, last_checked_time)
   if is_office_hours(current_time) and current_time != last_checked_time:
     for overlap in office_hours[current_time]:
       send_reminder(overlap[0], overlap[1])
