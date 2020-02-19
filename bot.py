@@ -1,10 +1,10 @@
-import os
+from os import environ
 import slack
 import datetime
 import time
 import json
 
-slack_token = os.environ["REMINDMETOKEN"]
+slack_token = environ["REMINDMETOKEN"]
 
 last_checked_time = ""
 
@@ -27,7 +27,6 @@ def get_time():
   return f"{current_day} {current_time.hour}:{current_time.minute}"
 
 def send_reminder(body, target_channel):
-  print('here too')
   web_client.chat_postMessage(
     channel=target_channel,
     text=f"@channel Office Hours beginning in 30 minutes:\n *{body}* ",
@@ -50,3 +49,22 @@ web_client = slack.WebClient(token=slack_token)
 while True:
   bot()
     
+# ,
+#   "Monday 15:30": [
+#     ["Sam - 4-5pm BIT 230", "#cst205-s20"]
+#   ],
+#   "Tuesday 17:30": [
+#     ["Amy - 6-7pm Zoom", "#cst205-s20"]
+#   ],
+#   "Wednesday 11:30": [
+#     ["Wes - 12-1:45pm BIT 207", "#cst205-s20"]
+#   ],
+#   "Wednesday 15:30": [
+#     ["Sam - 4-5pm BIT 230", "#cst205-s20"]
+#   ],
+#   "Thursday 13:30": [
+#     ["Amy - 2-4pm BIT 230", "#cst205-s20"]
+#   ],
+#   "Monday 18:20": [
+#     ["Sam Test Hours", "#testchannel2"]
+#   ]
